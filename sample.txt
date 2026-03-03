@@ -1,0 +1,52 @@
+Rapport Trimestriel — Sécurité des Systèmes d'Information
+Direction des Systèmes d'Information — Q1 2026
+
+RÉSUMÉ EXÉCUTIF
+
+Ce rapport présente les résultats de l'audit de sécurité mené sur l'infrastructure interne
+de l'entreprise au cours du premier trimestre 2026. L'analyse a révélé trois vulnérabilités
+critiques, dont deux affectent directement les applications web accessibles depuis l'extérieur.
+Une faille de type injection SQL a été détectée sur le portail client (version 2.3.1),
+permettant théoriquement à un attaquant d'exfiltrer l'ensemble de la base de données utilisateurs.
+Par ailleurs, 47 % des postes de travail tournent encore sous Windows 10, dont le support
+étendu prend fin en octobre 2025, exposant ces machines à des failles non corrigées.
+
+POINTS CLÉS
+
+1. Vulnérabilité SQL — Portail Client
+   - Sévérité : Critique (CVSS 9.1)
+   - Module affecté : /api/v2/search?query=
+   - Preuve de concept disponible en annexe A
+   - Correctif estimé : 3 jours de développement
+
+2. Certificats SSL expirés
+   - 12 certificats internes ont expiré depuis plus de 30 jours
+   - Risque : attaques man-in-the-middle sur le réseau interne
+   - Renouvellement possible en 24h via Let's Encrypt
+
+3. Obsolescence des postes de travail
+   - 214 machines sur 452 concernées
+   - Coût de migration estimé : 85 000 €
+   - Risque accru depuis la fin du support officiel de Microsoft
+
+RECOMMANDATIONS PRIORITAIRES
+
+L'équipe DSI recommande de traiter les points suivants dans l'ordre de priorité indiqué :
+
+Priorité 1 (Cette semaine) : Patcher la faille SQL injection en appliquant les requêtes
+paramétrées sur l'ensemble du module de recherche. Isoler le serveur affecté en attendant.
+
+Priorité 2 (Sous 30 jours) : Renouveler les 12 certificats SSL expirés et mettre en place
+une surveillance automatique via un outil de monitoring de certificats.
+
+Priorité 3 (Sous 6 mois) : Lancer le plan de migration Windows 11 en commençant par
+les postes à accès privilégié (administrateurs, équipe finance).
+
+CONCLUSION
+
+La surface d'attaque actuelle présente des risques inacceptables pour une organisation
+traitant des données personnelles soumises au RGPD. Sans action corrective rapide,
+l'entreprise s'expose à des sanctions financières potentielles et à une atteinte
+à sa réputation en cas d'incident de sécurité.
+
+Contact : security@entreprise.fr — Responsable : Marie Dupont, RSSI
