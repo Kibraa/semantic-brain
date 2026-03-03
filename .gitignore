@@ -1,5 +1,4 @@
 .env
-GUIDE_ENTRETIEN.md
 __pycache__/
 *.pyc
 .DS_Store
